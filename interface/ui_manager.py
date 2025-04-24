@@ -81,7 +81,7 @@ class UIManager:
         for resource, amount in gamestate.get_resources().items():
             draw_text(
                 self.screen,
-                f"- {resource}: {amount}",
+                f"- {resource.value}: {amount}",
                 (resource_item_x, current_y),  # Posição do item
                 self.font_normal,
                 Colors.WHITE,
@@ -110,7 +110,7 @@ class UIManager:
         for material, amount in golem_population.items():
             draw_text(
                 self.screen,
-                f"- {material}: {amount}",
+                f"- {material.value}: {amount}",
                 (golem_item_x, current_y),
                 self.font_normal,
                 Colors.WHITE,
