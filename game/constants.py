@@ -5,37 +5,53 @@ from game.enums import GolemMaterials, Resources
 #
 INITIAL_POPULATION_CAP = 10
 LOGIC_TICK_RATE = 20
-
+GAME_START_DAY = 1
+GAME_START_YEAR = 1
+GAME_DAYS_IN_YEAR = 365
+SECONDS_PER_DAY = 2  # real seconds that correspond to one in-game day
 
 #
 # GOLEMS
 #
 
-GOLEMS_DETAILS = {}
-
 INITIAL_GOLEMS = {
-    GolemMaterials.AGUA: 0,
-    GolemMaterials.ARENITO: 0,
-    GolemMaterials.ESTANHO: 0,
-    GolemMaterials.PEDRA: 2,
-    GolemMaterials.COBRE: 1,
-    GolemMaterials.GRANITO: 0,
-    GolemMaterials.LAMA: 3,
-    GolemMaterials.CALCARIO: 0,
+    GolemMaterials.WATER: 0,
+    GolemMaterials.SANDSTONE: 0,
+    GolemMaterials.TIN: 0,
+    GolemMaterials.STONE: 0,
+    GolemMaterials.COPPER: 0,
+    GolemMaterials.GRANITE: 0,
+    GolemMaterials.MUD: 5,
+    GolemMaterials.LIMESTONE: 0,
 }
-
-INITIAL_GOLEM_STATS = {"health": 100, "age": 0}
 
 
 #
 # RESOURCES
 #
+
 INITIAL_RESOURCES = {
-    Resources.COMIDA: 100,
-    Resources.PEDRA: 100,
-    Resources.LAMA: 100,
+    Resources.WOOD: 50,
+    Resources.MUD: 100,
+    Resources.STONE: 30,
+    Resources.GRANITE: 10,
+    Resources.LIMESTONE: 15,
+    Resources.SANDSTONE: 20,
+    Resources.WATER: 80,
+    Resources.MUSHROOM: 25,
 }
 
+# Resource icons placeholders (to be replaced with actual icons)
+RESOURCE_ICONS = {
+    Resources.WOOD: "[W]",
+    Resources.MUD: "[M]",
+    Resources.STONE: "[S]",
+    Resources.GRANITE: "[G]",
+    Resources.LIMESTONE: "[L]",
+    Resources.SANDSTONE: "[Sd]",
+    Resources.WATER: "[Wt]",
+    Resources.MUSHROOM: "[Mh]",
+}
 
 #
 # ATTRIBUTES

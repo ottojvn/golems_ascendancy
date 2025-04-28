@@ -9,6 +9,9 @@ class Colors(Enum):
     GREY = (128, 128, 128)
     WHITE = (255, 255, 255)
     YELLOW = (200, 200, 0)
+    DARK_GREY = (60, 60, 60)
+    BROWN = (139, 69, 19)
+    GREEN = (100, 200, 100)
 
 
 def draw_text(surface, text, position, font, color=Colors.WHITE, align="topleft"):
