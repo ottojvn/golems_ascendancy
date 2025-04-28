@@ -40,6 +40,19 @@ INITIAL_RESOURCES = {
 }
 
 #
+# JOBS
+# 
+BASE_GATHERING_RATE = {
+    # Base units gathered per golem per day
+    # Example: Mud golems are slightly better gatherers initially
+    GolemMaterials.MUD: 1.2,
+    GolemMaterials.STONE: 1.0,
+    GolemMaterials.WATER: 0.8, # Maybe water golems aren't great general gatherers
+    # Add rates for other materials as needed
+    # Default rate (if material not listed) will be handled in jobs.py
+}
+
+#
 # CONSTRUÇÕES
 #
 

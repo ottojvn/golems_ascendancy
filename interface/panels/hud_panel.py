@@ -36,12 +36,21 @@ def draw_top_hud(screen, state, cfg):
     x += 250  # space after date
     icon_size = cfg.get('icon_size', 24)
     rect_g = draw_golem_icon(screen, population['material'], (x, y), size=icon_size)
-    # tooltip for golem
-    cfg['tooltip_manager'].register_tooltip('golem', tr['golems'][population['material']], rect_g)
-    # draw count next to icon
-    draw_text(screen, str(population['count']),
-              (x + icon_size + cfg['indent'], y),
+    
+    # Updated Golem Count Text
+    available_golems = population.get('available', 0)
+    total_golems = population.get('total', 0)
+    golem_count_text = f"{available_golems} / {total_golems}"
+    text_x = x + icon_size + cfg['indent']
+    draw_text(screen, golem_count_text,
+              (text_x, y),
               cfg['font_normal'], cfg['colors'].CYAN)
+
+    # Tooltip for golem count (combining icon and text area)
+    text_width, text_height = cfg['font_normal'].size(golem_count_text)
+    tooltip_hover_rect = pygame.Rect(x, y, icon_size + cfg['indent'] + text_width, max(icon_size, text_height))
+    tooltip_text = tr['ui']['golem_count_tooltip'].format(available=available_golems, total=total_golems)
+    cfg['tooltip_manager'].register_tooltip('golem_count', tooltip_text, tooltip_hover_rect)
     
     # Resources row
     x = cfg['padding']

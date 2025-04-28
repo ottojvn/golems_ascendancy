@@ -5,7 +5,7 @@ class Tooltip:
     """
     Classe para exibir tooltips quando o mouse passa sobre elementos
     """
-    def __init__(self, text, font, max_width=300, padding=5, bg_color=(40, 40, 40), 
+    def __init__(self, text, font, max_width=300, padding=8, bg_color=(40, 40, 40), 
                  text_color=Colors.WHITE, border_color=Colors.GREY):
         self.text = text
         self.font = font
@@ -18,33 +18,44 @@ class Tooltip:
         self._calculate_size()
     
     def _calculate_size(self):
-        """Calcula tamanho com base no texto, respeitando max_width"""
-        # Divide o texto em linhas para não exceder max_width
-        words = self.text.split(' ')
-        lines = []
-        current_line = words[0]
-        
-        for word in words[1:]:
-            test_line = current_line + " " + word
-            test_width, _ = self.font.size(test_line)
-            
-            if test_width <= self.max_width:
-                current_line = test_line
-            else:
-                lines.append(current_line)
-                current_line = word
-        
-        lines.append(current_line)
-        
-        # Determina a largura e altura baseadas nas linhas
+        """Calcula tamanho com base no texto, respeitando max_width e \n."""
+        self.lines = []
         max_line_width = 0
-        for line in lines:
-            width, _ = self.font.size(line)
-            max_line_width = max(max_line_width, width)
         
+        # First, split by explicit newlines
+        segments = self.text.split('\n')
+        
+        for segment in segments:
+            # Apply word wrapping to each segment
+            words = segment.split(' ')
+            if not words:
+                self.lines.append("") # Handle empty lines from double newlines
+                continue
+                
+            current_line = words[0]
+            for word in words[1:]:
+                # Handle potential empty words from multiple spaces
+                if not word:
+                    continue 
+                test_line = current_line + " " + word
+                test_width, _ = self.font.size(test_line)
+                
+                if test_width <= self.max_width:
+                    current_line = test_line
+                else:
+                    self.lines.append(current_line)
+                    line_width, _ = self.font.size(current_line)
+                    max_line_width = max(max_line_width, line_width)
+                    current_line = word
+            
+            # Add the last line of the segment
+            self.lines.append(current_line)
+            line_width, _ = self.font.size(current_line)
+            max_line_width = max(max_line_width, line_width)
+
+        # Determine the final width and height
         self.width = max_line_width + (self.padding * 2)
-        self.height = (len(lines) * self.font.get_linesize()) + (self.padding * 2)
-        self.lines = lines
+        self.height = (len(self.lines) * self.font.get_linesize()) + (self.padding * 2)
     
     def show(self, pos):
         """Marca o tooltip como visível e define sua posição"""

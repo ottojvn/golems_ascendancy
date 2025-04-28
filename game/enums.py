@@ -21,3 +21,8 @@ class GolemMaterials(Enum):
     COPPER = "copper"
     TIN = "tin"
     MUD = "mud"
+
+
+class Jobs(Enum):
+    GATHERER = "gatherer"
+    # Add other jobs here later

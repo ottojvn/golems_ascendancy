@@ -1,11 +1,12 @@
 from game.constants import INITIAL_GOLEMS
 
 def init_population(material):
-    """Inicializa população com contador de golems de um único material"""
-    return {'material': material, 'count': INITIAL_GOLEMS.get(material, 0)}
+    """Initializes population with total and available counts."""
+    count = INITIAL_GOLEMS.get(material, 0)
+    return {'material': material, 'total': count, 'available': count}
 
 def update_population(pop, dt):
-    """Atualiza população de golems usando pop['material'] e dt"""
-    material = pop['material']
-    count = pop['count']
-    return {'material': material, 'count': count}
+    """Placeholder for future population updates (births, deaths)."""
+    # Currently, only allocation/deallocation changes counts.
+    # This function might handle things like golem creation/destruction later.
+    return pop # No changes based on time yet

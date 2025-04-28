@@ -1,5 +1,5 @@
 import pygame
-from game.enums import Resources, GolemMaterials
+from game.enums import Resources, GolemMaterials, Jobs # Import Jobs
 
 def draw_resource_icon(screen, resource, position, size=16):
     """
@@ -80,3 +80,38 @@ def draw_golem_icon(screen, material, position, size=24):
                       eye_radius)
 
     return rect  # Retorna o retângulo para referência
+
+
+def draw_job_icon(screen, job_type, position, size=24):
+    """
+    Desenha um placeholder para o ícone do job
+    Args:
+        screen: A superfície onde desenhar
+        job_type: O enum Jobs a desenhar
+        position: (x, y) posição para desenhar
+        size: tamanho do ícone (quadrado)
+        
+    Returns:
+        pygame.Rect: O retângulo do ícone, útil para detecção de hover/click
+    """
+    # Mapeamento de cores/símbolos para jobs (placeholders)
+    job_visuals = {
+        Jobs.GATHERER: {'color': (34, 139, 34), 'symbol': 'G'} # Verde floresta
+        # Add visuals for other jobs here
+    }
+    
+    visual = job_visuals.get(job_type, {'color': (128, 0, 128), 'symbol': '?'}) # Roxo default
+    color = visual['color']
+    symbol = visual['symbol']
+    
+    rect = pygame.Rect(position[0], position[1], size, size)
+    pygame.draw.rect(screen, color, rect, border_radius=3) # Rounded rectangle
+    pygame.draw.rect(screen, (255, 255, 255), rect, 1, border_radius=3) # Borda branca
+
+    # Draw a symbol inside (optional)
+    font = pygame.font.Font(None, int(size * 0.8)) # Simple default font
+    text_surf = font.render(symbol, True, (255, 255, 255)) # White symbol
+    text_rect = text_surf.get_rect(center=rect.center)
+    screen.blit(text_surf, text_rect)
+
+    return rect

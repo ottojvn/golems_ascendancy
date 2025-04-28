@@ -1,4 +1,4 @@
-from game.enums import Resources, GolemMaterials
+from game.enums import Resources, GolemMaterials, Jobs
 
 TRANSLATIONS = {
     'en': {
@@ -6,6 +6,11 @@ TRANSLATIONS = {
         'year': 'Year',
         'golems': 'Golems',
         'press_escape': 'Press ESC to exit',
+        'ui': {
+            'golem_count_tooltip': '{available} Idle / {total} Total Golems',
+            'left_click_assign': 'Left-click: Assign Golem',
+            'right_click_unassign': 'Right-click: Unassign Golem',
+        },
         'resources': {
             Resources.WOOD: 'Wood: Basic material for buildings and tools.',
             Resources.MUD: 'Mud: Used to create basic golems and fertilize crops.',
@@ -25,6 +30,12 @@ TRANSLATIONS = {
             GolemMaterials.COPPER: 'Copper Golem: Conductor of energy, useful for advanced tech.',
             GolemMaterials.TIN: 'Tin Golem: Malleable and corrosion resistant.',
             GolemMaterials.MUD: 'Mud Golem: Versatile and easy to create, ideal for agriculture.',
+        },
+        'jobs': {
+            Jobs.GATHERER: {
+                'name': 'Gatherer',
+                'desc': 'Assigns golems to collect basic resources.'
+            }
         }
     },
     'pt': {
@@ -32,6 +43,11 @@ TRANSLATIONS = {
         'year': 'Ano',
         'golems': 'Golems',
         'press_escape': 'Pressione ESC para sair',
+        'ui': {
+            'golem_count_tooltip': '{available} Ociosos / {total} Golems Totais',
+            'left_click_assign': 'Clique esquerdo: Alocar Golem',
+            'right_click_unassign': 'Clique direito: Desalocar Golem',
+        },
         'resources': {
             Resources.WOOD: 'Madeira: Material básico para construções e ferramentas.',
             Resources.MUD: 'Lama: Usada para criar golems básicos e fertilizar plantações.',
@@ -51,6 +67,12 @@ TRANSLATIONS = {
             GolemMaterials.COPPER: 'Golem de cobre: Condutor de energia, útil para tecnologias avançadas.',
             GolemMaterials.TIN: 'Golem de estanho: Maleável e resistente à corrosão.',
             GolemMaterials.MUD: 'Golem de lama: Versátil e fácil de criar, ideal para cultivo.',
+        },
+        'jobs': {
+            Jobs.GATHERER: {
+                'name': 'Coletor',
+                'desc': 'Aloca golems para coletar recursos básicos.'
+            }
         }
     }
 }
