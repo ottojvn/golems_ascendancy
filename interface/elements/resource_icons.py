@@ -1,5 +1,5 @@
 import pygame
-from game.enums import Resources
+from game.enums import Resources, GolemMaterials
 
 def draw_resource_icon(screen, resource, position, size=16):
     """
@@ -46,19 +46,20 @@ def draw_golem_icon(screen, material, position, size=24):
     Returns:
         pygame.Rect: O retângulo do ícone, útil para detecção de hover
     """
-    # Mapeamento de cores para materiais (placeholders)
+    # Mapeamento de cores para materiais (placeholders) - CORRIGIDO para usar enum values
     colors = {
-        'agua': (65, 105, 225),     # Azul
-        'pedra': (169, 169, 169),   # Cinza claro
-        'granito': (105, 105, 105), # Cinza escuro
-        'calcario': (220, 220, 220), # Quase branco
-        'arenito': (194, 178, 128), # Bege
-        'cobre': (184, 115, 51),    # Cobre
-        'estanho': (180, 180, 180), # Prateado
-        'lama': (101, 67, 33),      # Marrom escuro
+        GolemMaterials.WATER.value: (65, 105, 225),     # Azul
+        GolemMaterials.STONE.value: (169, 169, 169),   # Cinza claro
+        GolemMaterials.GRANITE.value: (105, 105, 105), # Cinza escuro
+        GolemMaterials.LIMESTONE.value: (220, 220, 220), # Quase branco
+        GolemMaterials.SANDSTONE.value: (194, 178, 128), # Bege
+        GolemMaterials.COPPER.value: (184, 115, 51),    # Cobre
+        GolemMaterials.TIN.value: (180, 180, 180), # Prateado
+        GolemMaterials.MUD.value: (101, 67, 33),      # Marrom escuro
     }
     
     # Desenhar o ícone circular do golem
+    # Usa material.value para buscar a cor correta
     color = colors.get(material.value, (200, 200, 200))  # Cinza default
     rect = pygame.Rect(position[0], position[1], size, size)
     

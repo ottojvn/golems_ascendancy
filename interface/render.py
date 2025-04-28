@@ -15,12 +15,6 @@ def draw_ui(state, cfg):
     # Draw the top HUD bar
     hud_height = draw_top_hud(screen, state, cfg)
     
-    # Content area starts below the HUD
-    y = hud_height + cfg['padding']
-    
-    # Aqui você pode adicionar outros elementos de UI que devem aparecer abaixo da HUD
-    # y = draw_some_other_panel(screen, state, y, cfg)
-    
     # Exit information at the bottom
     draw_exit_panel(screen, cfg)
     
